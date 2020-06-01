@@ -1,9 +1,7 @@
 package com.hrms.pages;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import com.hrms.utils.CommonMethods;
 
 public class LoginPageElements extends CommonMethods{// page foctory li olani (bu class i)extend yapmamizin nedeni burada elementlere common 
@@ -12,8 +10,6 @@ public class LoginPageElements extends CommonMethods{// page foctory li olani (b
 	// Elementleri page factory kullanmadan bir class ta tanimlar ve depolarsak o class i extend yapmamiz gerekir 
 	// Not using PageFactory, You have to extend CommonMethods or BaseClass
 	// public WebElement username2=driver.findElement(By.id("txtUsername")); // Example of POM Witout Page factory
-
-	
 	
 	 
 	// Using PageFactory and @FindBy Annotation normally do not need extend from any class but to make some operation on elements in that class we can extend
@@ -42,12 +38,10 @@ public class LoginPageElements extends CommonMethods{// page foctory li olani (b
 		//then we will need to create public getters and setters 
 		//so we can access page elements from test classes
 	
-	
 	//Setter
 	public void sendUsername(String usename) {
 		sendText(username, usename);
 	}
-	
 	
 	// Getter
 	
@@ -55,10 +49,8 @@ public class LoginPageElements extends CommonMethods{// page foctory li olani (b
 		return username;
 	}
 	
-	
-	public void login(String usename , String pwd) {
-		
-		sendText(username ,usename);
+	public void login(String uid , String pwd) {
+		sendText(username ,uid);
 		sendText (password, pwd);
 		click(loginBtn);
 	}

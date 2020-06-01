@@ -1,32 +1,51 @@
 package com.hrms.testcases;
-
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import com.hrms.utils.CommonMethods;
+import com.hrms.utils.ConfigsReader;
+import com.hrms.utils.Constants;
+import com.hrms.utils.ExcelUtility;
 
-public class AddEmployeeTest extends CommonMethods{
-
-	
-	@BeforeMethod
-	public void openBrowser() {
-		setUp();
-	}
-	@AfterMethod
-	public void closeBrowser() {
-		tearDown();
-	}
-	
-	@Test
-	public void addEmployeePage() {
-		
-	}
-	
-	
-	
-	
-	
-	
-	
+public class AddEmployeeTest extends CommonMethods {
+//@Test(dataProvider = "userData", groups = { "homework", "addEmp", "regression" })
+	@Test(dataProvider ="userDataFromExcel", groups = { "homework", "addEmp", "regression" })
+	public void addEmployee(String firstName, String lastName, String username, String password) {                                                                                                                                   // System.out.println(firstName + " " + lastName + " " + username + " " + password);
+		// login into HRMS
+		login.login(ConfigsReader.getProperty("username"),ConfigsReader.getProperty("password"));
+// navigate to Add Employee page
+		dashboard.navigateToAddEmployee();
+		wait(1);
+// add employee information
+		sendText(addEmp.empfirstnme, firstName);
+		sendText(addEmp.lastnme, lastName);
+// get EmployeeID
+		String expectedEmpId = addEmp.empid.getAttribute("value");
+// click on Create Login Details
+		click(addEmp.loginDetls);
+		wait(1);
+		sendText(addEmp.username, username);
+		sendText(addEmp.userpassword, password);
+		sendText(addEmp.reuserpassword, password);
+		wait(1);
+		jsClick(addEmp.BtnSave);
+		wait(1);
+// validation
+		waitForVisibilityOfElemet(pdetails.lblPersonalDetails);
+		String actualEmpId = pdetails.employeeId.getAttribute("value");
+		Assert.assertEquals(actualEmpId, expectedEmpId, "Employee ID did not match!");
+// take screenshot
+		takeScreenshot(firstName + "_" + lastName);
 }
+	@DataProvider(name = "userData")
+	public Object[][] getData() {
+	Object[][] data = { { "Rajass", "Caporass","raj12345345ss","AmirKhan_@23ss" },
+		{ "Johss", "Smthss", "john23ss", "AmirKhan_@13ss" }, { "Mayss", "Anss", "mary13ss", "Amirhan_@123ss"},
+		{ "Roanssi","Sakiss", "rohai12ss3","Amirhan_@123ss" },{ "Alisss","Taraciss","ali1k23ss","AmirKhan_@13ss"},
+		};
+	return data;
+}
+	@DataProvider(name ="userDataFromExcel")
+	public Object[][] getData2() {
+		return ExcelUtility.excelIntoArray(Constants.TESTDATA_FILEPATH, "Sheet1");
+	}}
