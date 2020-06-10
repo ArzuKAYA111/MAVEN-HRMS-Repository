@@ -1,7 +1,6 @@
 package com.hrms.testbase;
 
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
@@ -10,7 +9,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
@@ -43,7 +41,7 @@ public class BaseClass { // Create testClass In different Package to see if we t
 	public void writeReporter() {
 		report.flush();
 	}
-
+   // @BeforeClass(alwaysRun = true) 
 	@BeforeMethod(alwaysRun = true) // to make this method run before every @Test method
 	public static WebDriver setUp() {
 		// create reader path to property file
@@ -79,7 +77,7 @@ public class BaseClass { // Create testClass In different Package to see if we t
 
 		return driver;
 	}
-
+   // @AfterClass(alwaysRun = true)
 	@AfterMethod(alwaysRun = true) // to make this method to run after every @Test method
 	public static void tearDown() {// To close page
 

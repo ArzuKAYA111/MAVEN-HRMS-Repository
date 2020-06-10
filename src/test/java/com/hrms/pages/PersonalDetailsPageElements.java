@@ -11,24 +11,37 @@ import com.hrms.testbase.BaseClass;
 public class PersonalDetailsPageElements {
 	
 	
-	@FindBy(id= "personal_txtEmpFirstName")
+	@FindBy(id="personal_txtEmpFirstName")
 	public WebElement firstname;
+	
 	@FindBy(id= "personal_txtEmpLastName")
 	public WebElement lasstname;
 	
-	@FindBy(id = "personal_cmbNation")
+	@FindBy(id ="personal_cmbNation")
 	public WebElement nationalityDD;
 
-	@FindBy(name = "personal[optGender]")
+	@FindBy(name ="personal[optGender]")
 	public List<WebElement> genderRadioGroup;
-	@FindBy(xpath= "//input[@value='1'and @id='personal_optGender_1']")
-	public WebElement Gndmale;
-	@FindBy(xpath = "//div[@id='pdMainContainer']/div[1]/h1")
+	
+	@FindBy(xpath ="//div[@id='pdMainContainer']/div[1]/h1")
 	public WebElement lblPersonalDetails;
 	
-	@FindBy(id = "personal_txtEmployeeId")
+	@FindBy(id ="personal_txtEmployeeId")
 	public WebElement employeeId;
 	
+	@FindBy(id ="personal_cmbNation")
+	public WebElement nationality;   
+	
+	@FindBy(id ="btnSave")
+	public WebElement Edit;
+	
+	@FindBy(id ="btnSave")
+	public WebElement save;
+
+	@FindBy(id="menu_core_viewDefinedPredefinedReports")
+	public WebElement report;
+	@FindBy(id="personal_DOB")
+	public WebElement birthDate;
 	
 	public PersonalDetailsPageElements() {
 		PageFactory.initElements(BaseClass.driver, this);

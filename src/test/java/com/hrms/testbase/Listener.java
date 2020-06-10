@@ -10,17 +10,17 @@ import com.hrms.utils.CommonMethods;
 
 public class Listener implements ITestListener{// if we extend listener class to commen method we dont need baseclass etc to write
 
-@Override
-public void onStart(ITestContext context) {// this listener executes based on <test> from xml file 
-	System.out.println("Functionality Testing Start ");
-	
-}
-	
-@Override	
-public void onFinish(ITestContext context)	{
-	
-	System.out.println("Functionality Testing Finished ");
-}
+//@Override
+//public void onStart(ITestContext context) {// this listener executes based on <test> from xml file 
+//	System.out.println("Functionality Testing Start ");
+//	
+//}
+//	
+//@Override	
+//public void onFinish(ITestContext context)	{
+//	
+//	System.out.println("Functionality Testing Finished ");
+//}
 
 @Override	
 public void onTestStart(ITestResult result)	{// this listener will execute when @Testmethod start

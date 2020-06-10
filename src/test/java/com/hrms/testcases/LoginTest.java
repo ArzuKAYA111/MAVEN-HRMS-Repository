@@ -11,7 +11,7 @@ public class LoginTest extends CommonMethods {
 @Test(groups="smoke")
 public void ValidAdminlogin() {
 	
-	test.info("Entering valid admin credantials");
+test.info("Entering valid admin credantials");
 	
 //LoginPageElements login=new LoginPageElements();
 sendText(login.username, ConfigsReader.getProperty("username"));
@@ -29,7 +29,7 @@ Assert.assertTrue(actualUser.contains(ConfigsReader.getProperty("username")));
 
 @Test(groups ="regression")
 public void InvalidPasswordlogin() {
-
+test.info("Entering invalid password");
 	//LoginPageElements login=new LoginPageElements();
 	sendText(login.username, ConfigsReader.getProperty("username"));
 	sendText(login.password, "uiuguig");
@@ -40,7 +40,7 @@ public void InvalidPasswordlogin() {
 
 @Test(enabled=true,groups="regression")
 public void emptyUsernamelogin() {
-
+test.info("Testing by leaving username blank");
 //	LoginPageElements login=new LoginPageElements();
 	//sendText(login.username, ConfigsReader.getProperty("username")); // common out to make empty user name
 	sendText(login.password, ConfigsReader.getProperty("password"));

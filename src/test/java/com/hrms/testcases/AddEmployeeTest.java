@@ -7,6 +7,7 @@ import com.hrms.utils.ConfigsReader;
 import com.hrms.utils.Constants;
 import com.hrms.utils.ExcelUtility;
 
+
 public class AddEmployeeTest extends CommonMethods {
 //@Test(dataProvider = "userData", groups = { "homework", "addEmp", "regression" })
 	@Test(dataProvider ="userDataFromExcel", groups = { "homework", "addEmp", "regression" })
@@ -29,10 +30,10 @@ public class AddEmployeeTest extends CommonMethods {
 		sendText(addEmp.reuserpassword, password);
 		wait(1);
 		jsClick(addEmp.BtnSave);
-		wait(1);
+	wait(2);
 // validation
 		waitForVisibilityOfElemet(pdetails.lblPersonalDetails);
-		String actualEmpId = pdetails.employeeId.getAttribute("value");
+		String actualEmpId =pdetails.employeeId.getAttribute("value");
 		Assert.assertEquals(actualEmpId, expectedEmpId, "Employee ID did not match!");
 // take screenshot
 		takeScreenshot(firstName + "_" + lastName);

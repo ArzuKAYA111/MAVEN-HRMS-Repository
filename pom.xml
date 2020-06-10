@@ -6,26 +6,34 @@
   
   <!-- anythin must be adding in project block
  -->  
-  
+
   <properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
   
   <dependencies>
-	
+	<!-- Goodle a maven repository yaz cikanilk link e tikla testimiz icin gerekli jar file'lari projemize eklmek icin onlarin 
+	dependency lerini tek tek searc kismindan search edip buraya copy paste yap genelde en cok kullaniliyor olanlari copy yap  -->
+	<!-- 1- Search Selenium( en cok kullanilan versiyona yada son versiyonlardan birine tikla)
+	2- Search TestNG (org.testng link ine tikla / oradan bir versiyona tikla ve code block unu copy yapip buraya paste yap)
+	3- Common io(apachi commons io link ine tikla oradan encok kullanilan yada son versiyonlardan birine tikla +  copy +paste  here)
+	4- Search apachi poi (org.apachi poi .poi tikla bir versiyonunu + COPY + PASTE here )
+	5-Search extent reports ( extent reports /avenstack/  a tikla a version COPY +PATE here ) ....> to create report with details 
+		 -->
+		
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>3.141.59</version>
+			<artifactId>selenium-java</artifactId> 
+			<version>3.141.59</version>               <!-- maven gidip Selenium 3.141 59 version unun jar file ini maven repositoryden projemize cekecek -->
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 		<dependency>
-			<groupId>org.testng</groupId>
+			<groupId>org.testng</groupId> 
 			<artifactId>testng</artifactId>
-			<version>7.1.0</version>
+			<version>7.1.0</version>                  <!-- maven gidip TestNG 7.1.0.version unun jar file ini maven repositoryden projemize cekecek -->
 			<scope>test</scope>
 		</dependency>
 		
@@ -33,14 +41,14 @@
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>2.6</version>
+			<version>2.6</version>                    <!-- maven gidip common io 2.6 versionunu  maven repositoryden projemize cekecek -->
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
-			<version>4.1.2</version>
+			<version>4.1.2</version>   <!-- maven gidip appachi poi  4.1.2 versionunu  maven repositoryden projemize cekecek -->
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
@@ -55,8 +63,27 @@
     <artifactId>extentreports</artifactId>
     <version>4.0.9</version>
 </dependency>
-
-		
-		
 		</dependencies>
+		
+		<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M4</version>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>EmplReportTEST.xml</suiteXmlFile> <!--  testng yazan yere groups adini yazarak istedigimiz group u execute edebiliriz -->
+					<!-- <suiteXmlFile>regression.xml</suiteXmlFile> -->
+					
+					</suiteXmlFiles>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+		
+		
+		
+		
+		
 </project>

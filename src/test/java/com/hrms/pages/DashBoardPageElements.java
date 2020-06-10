@@ -40,7 +40,10 @@ public class DashBoardPageElements extends CommonMethods {// To create useable m
 
 	@FindBy(id = "btnSave")
 	public WebElement BtnSave;
-
+	
+	@FindBy (id="menu_core_viewDefinedPredefinedReports")
+	public WebElement reports;
+	
 	public DashBoardPageElements() {
 		PageFactory.initElements(BaseClass.driver, this);
 	}
@@ -48,7 +51,11 @@ public class DashBoardPageElements extends CommonMethods {// To create useable m
 	public void navigateToAddEmployee() {
 		jsClick(PIM);
 		jsClick(addemp); //  We created method to click elements what defind in that class so we willl calll taha method in Test
-		jsClick(BtnSave);
+	
 	}
-
+	public void navigateToREport() {
+		jsClick(PIM);
+		jsClick(reports); //  We created method to click elements what defind in that class so we willl calll taha method in Test
+	
+	}
 }

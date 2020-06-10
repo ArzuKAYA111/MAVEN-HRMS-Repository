@@ -11,17 +11,17 @@ public class AddEmployeePageElements extends CommonMethods{
 	@FindBy(id="firstName")
 	public WebElement empfirstnme;
 	
+	@FindBy(id="middleName")
+	public WebElement midlname;
+	
 	@FindBy(id="lastName")
 	public WebElement lastnme;
 	
 	@FindBy(id="employeeId")
 	public WebElement empid;
 	
-	@FindBy(id="personal_txtEmployeeId")
-	public WebElement lablempid;
-	
-	@FindBy(id="photofile")
-	public WebElement empPrfl;
+	@FindBy (id="photofile")
+	public WebElement chooseFile;
 	
 	@FindBy(id="chkLogin")
 	public WebElement loginDetls;
@@ -35,11 +35,8 @@ public class AddEmployeePageElements extends CommonMethods{
 	@FindBy(id="re_password")
 	public WebElement reuserpassword;
 	
-	@FindBy(xpath="//span[@for='firstName']")
-	public WebElement errmsgname;
-	
-	@FindBy(xpath="//span[@for='lastName']")
-	public WebElement errmsgLname;
+	@FindBy(xpath="//span[text()='Passwords do not match']")
+	public WebElement passwordErrmsg; 
 	
 	@FindBy(id="btnSave")
 	public WebElement BtnSave;
